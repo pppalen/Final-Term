@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if products %}
+{{ products[0] }}
+{% else %}
+Flask App
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% if product %}
+    <h2>{{ product[0] }}</h2>
+    <p>
+        {{ product[1] }}
+    </p>
+    <p>
+        {{ product[2] }}
+    </p>
+    <p>
+        {{ product[3] }}
+    </p>
+    <p>
+        {{ product[4] }}
+    </p>
+    {% else %}
+    <h3>
+        Invalid Product
+    </h3>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-6">
+        <input type="submit" value="Buy" class="btn btn-primary"/>
+    </div>
+</div>
+<div>
+    <a href="{{ url_for('index') }}">Back</a>
+</div>
+{% endblock %}

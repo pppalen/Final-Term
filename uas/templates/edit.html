@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/product/edit/{{ product[0] }}" method="POST">
+    <form>
+        <div class="row mb-3">
+            <label for="productname" class="col-2 col-form-label">Product Name</label>
+            <div class="col-6">
+                <input type="text" name="productname" id="productname" class="form-control"  required/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="productdesc" class="col-2 col-form-label">Product Description</label>
+            <div class="col-6">
+                <input type="text" name="productdesc" id="productdesc" class="form-control"  required/>
+            </div>
+        </div>
+        <input type="img" id="image" name="image">
+        <div class="row mb-3">
+            <label for="productbrand" class="col-2 col-form-label">Product Brand</label>
+            <div class="col-6">
+                <input type="text" name="productbrand" id="productbrand" class="form-control"  required/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="productprice" class="col-2 col-form-label">Product Price</label>
+            <div class="col-6">
+                <input type="text" name="productprice" id="productprice" class="form-control"  required/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="productstock" class="col-2 col-form-label">Product Stock</label>
+            <div class="col-6">
+                <input type="text" name="productstock" id="productstock" class="form-control"  required/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input type="submit" value="Edit" class="btn btn-primary"/>
+            </div>
+        </div>
+    </form>
+    
+    <div>
+        <a class="link-primary" href="{{ url_for('index') }}">Back</a>
+    </div>
+</form>
+
+<div>
+    <a href="{{ url_for('home') }}">Back</a>
+</div>
+{% endblock %}

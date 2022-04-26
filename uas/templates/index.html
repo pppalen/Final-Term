@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% if articles %}
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <td width="30%">Product</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            {% for (productId, productBrand, productName, price, description,image, stock _) in product %}
+
+            <tr>
+                <td>
+                    <h4>{{ productname }}</h4>
+                </td>
+                <td>
+                    <!-- notice here, in url_for, we have second parameter to accept -->
+
+
+                    <!-- only let logged in user see the edit and delete -->
+                    {% if session and session.get('username') %}
+                        <a class="btn btn-warning" href="{{ url_for('edit', productId=productId) }}">Edit</a>
+                        <button type="button" class="btn btn-danger" onclick="deleteProduct"({{ productId }},>Delete</button>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h1>No Articles Found</h1>
+        {% endif %}
+
+        <!-- create is only able for logged in users -->
+        {% if session and session.get('username') %}
+        <div>
+            <a class="btn btn-success" href="{{ url_for('create') }}">Create</a>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
